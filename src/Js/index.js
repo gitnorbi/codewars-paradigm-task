@@ -9,3 +9,42 @@ because it uses the letters A-Z at least once (case is irrelevant).
 -Ignore numbers and punctuation.
 
 */
+
+
+
+// Array for alphabet letters 
+const alphabetLetters = ["a","b","c","d","e","f","g","h","i","j",
+"k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+let sentence;
+
+let result;
+
+document.querySelector("#submitButton").addEventListener("click", getInputToVariable); 
+document.querySelector("#submitButton").addEventListener("click", checkSentence); 
+document.querySelector("#submitButton").addEventListener("click", showResult); 
+//
+
+function getInputToVariable(){
+    sentence = document.querySelector("#InputSentence").value;
+}
+
+function checkSentence() {
+result="Pangrams"
+alphabetLetters.forEach((values)=>{
+let regex = new RegExp( values, 'i' );
+let findLetters=sentence.search(regex);
+
+if(findLetters<0){
+result="not Pangrams"
+
+}
+})
+
+}
+
+function showResult(){
+    document.querySelector(".result").innerHTML = result;
+}
+
+
